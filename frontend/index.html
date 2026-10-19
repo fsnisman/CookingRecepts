@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fffaf4">
+  <meta name="description" content="Домашняя книга кулинарных рецептов: находите, сохраняйте и добавляйте любимые блюда.">
+  <title>Вкусно! — Книга кулинарных рецептов</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Вкусно! На главную"><span class="brand-mark">✳</span><span>вкусно<span class="brand-dot">.</span></span></a>
+      <div class="nav-right">
+        <span class="course-label">Учебный веб-сервис</span>
+        <a class="nav-link" href="/docs" target="_blank" rel="noopener noreferrer">API Docs <span aria-hidden="true">↗</span></a>
+        <button class="button button-dark nav-add" type="button" data-action="new"><span aria-hidden="true">＋</span> Добавить рецепт</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-spark">✦</span> ТВОЯ КНИГА ВКУСНЫХ ИДЕЙ</div>
+          <h1>Готовить дома —<br><em>это вкусно!</em></h1>
+          <p class="hero-description">Здесь живут любимые рецепты. Ищи вдохновение, открывай новые блюда и сохраняй то, что хочется приготовить снова.</p>
+          <div class="hero-ctas">
+            <a class="button button-primary button-large" href="#catalog">Выбрать рецепт <span aria-hidden="true">↗</span></a>
+            <span class="hero-cta-note">От простого завтрака<br>до особенного ужина</span>
+          </div>
+          <div class="hero-stats" aria-label="Статистика сборника">
+            <div><strong id="statTotal">—</strong><span>вкусных рецептов</span></div>
+            <span class="stat-divider"></span>
+            <div><strong id="statCategories">—</strong><span>категорий блюд</span></div>
+            <span class="stat-divider"></span>
+            <div><strong id="statQuick">—</strong><span>быстрых идей</span></div>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="hero-orbit orbit-one"></div>
+          <div class="hero-orbit orbit-two"></div>
+          <div class="hero-doodle doodle-a">✳</div>
+          <div class="hero-doodle doodle-b">✦</div>
+          <div class="hero-doodle doodle-c">❋</div>
+          <div class="hero-main-plate"><div class="hero-main-food">🥘</div></div>
+          <div class="floating-note note-top"><span class="note-icon">🍋</span><span>Свежие идеи<br><strong>каждый день</strong></span></div>
+          <div class="floating-note note-bottom"><span class="note-icon">❤️</span><span>Приготовлено<br><strong>с любовью</strong></span></div>
+          <div class="hero-art-caption">ВКУСНЫЕ МОМЕНТЫ — КАЖДЫЙ ДЕНЬ</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-section" id="catalog">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">✦ КОЛЛЕКЦИЯ РЕЦЕПТОВ</p>
+            <h2>Что приготовим <em>сегодня?</em></h2>
+            <p class="section-description">От быстрых завтраков до уютных семейных ужинов.</p>
+          </div>
+          <button class="button button-outline desktop-add" type="button" data-action="new"><span aria-hidden="true">＋</span> Свой рецепт</button>
+        </div>
+
+        <div class="filters">
+          <label class="search-field">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+            <span class="sr-only">Поиск по названию или описанию</span>
+            <input id="searchInput" type="search" placeholder="Найти вкусный рецепт..." autocomplete="off">
+            <span class="search-hint">Поиск</span>
+          </label>
+          <div class="filter-secondary">
+            <label class="sr-only" for="difficultySelect">Сложность</label>
+            <select id="difficultySelect" class="filter-select">
+              <option value="">Любая сложность</option>
+              <option value="Легко">Легко</option>
+              <option value="Средне">Средне</option>
+              <option value="Сложно">Сложно</option>
+            </select>
+            <label class="sr-only" for="sortSelect">Сортировка</label>
+            <select id="sortSelect" class="filter-select">
+              <option value="newest">Сначала новые</option>
+              <option value="oldest">Сначала старые</option>
+              <option value="title">По названию</option>
+              <option value="fast">Сначала быстрые</option>
+            </select>
+          </div>
+        </div>
+        <div class="category-row" id="categoryRow" aria-label="Категории рецептов">
+          <button type="button" class="category-chip active" data-category="" aria-pressed="true">Все рецепты</button>
+          <button type="button" class="category-chip" data-category="Завтрак">🍳 Завтраки</button>
+          <button type="button" class="category-chip" data-category="Обед">🥣 Обеды</button>
+          <button type="button" class="category-chip" data-category="Ужин">🍽️ Ужины</button>
+          <button type="button" class="category-chip" data-category="Десерт">🍰 Десерты</button>
+          <button type="button" class="category-chip" data-category="Закуска">🥗 Закуски</button>
+          <button type="button" class="category-chip" data-category="Напиток">🍹 Напитки</button>
+          <button type="button" class="category-chip favorite-chip" id="favoritesFilter" aria-pressed="false">♡ Избранное</button>
+        </div>
+
+        <div class="catalog-meta"><span id="resultsCount">Загружаем рецепты...</span><span class="catalog-flourish">С любовью к домашней кухне ✳</span></div>
+        <div class="recipe-grid" id="recipeGrid" aria-live="polite"></div>
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon">🍽️</div>
+          <h3>Кажется, здесь пока пусто</h3>
+          <p>Попробуйте выбрать другую категорию или создать свой рецепт.</p>
+          <button class="button button-primary" type="button" id="resetFilters">Сбросить фильтры</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="bottom-cta">
+      <div class="container">
+        <div class="cta-card">
+          <div><p class="section-kicker">✦ КУЛИНАРНОЕ ВДОХНОВЕНИЕ</p><h2>У тебя есть фирменное <em>блюдо?</em></h2><p>Поделись своим рецептом и сохрани его в общей коллекции.</p></div>
+          <button type="button" class="button button-primary button-large" data-action="new">＋ Добавить рецепт</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="container footer-inner"><span class="brand footer-brand"><span class="brand-mark">✳</span><span>вкусно<span class="brand-dot">.</span></span></span><span>Учебный проект · Проектирование веб-сервисов</span><span>FastAPI · PostgreSQL · Docker</span></div></footer>
+
+  <dialog id="recipeDialog" class="modal detail-modal" aria-label="Просмотр рецепта"><div class="modal-content" id="recipeDialogContent"></div></dialog>
+
+  <dialog id="editorDialog" class="modal editor-modal" aria-labelledby="editorTitle">
+    <div class="modal-content editor-content">
+      <div class="modal-header"><div><p class="section-kicker">✦ МОЯ КУЛИНАРНАЯ КНИГА</p><h2 id="editorTitle">Новый рецепт</h2></div><button class="icon-button modal-close" type="button" data-close="editor" aria-label="Закрыть">×</button></div>
+      <form id="recipeForm">
+        <div class="editor-body">
+          <div class="form-field"><label for="recipeTitle">Название блюда <span>*</span></label><input id="recipeTitle" name="title" maxlength="120" minlength="3" required placeholder="Например, яблочный пирог"></div>
+          <div class="form-field"><label for="recipeDescription">Короткое описание <span>*</span></label><textarea id="recipeDescription" name="description" maxlength="600" minlength="10" rows="3" required placeholder="Чем хорош этот рецепт?"></textarea></div>
+          <div class="form-grid three">
+            <div class="form-field"><label for="recipeCategory">Категория</label><select id="recipeCategory" name="category" required><option>Завтрак</option><option>Обед</option><option>Ужин</option><option>Десерт</option><option>Закуска</option><option>Напиток</option></select></div>
+            <div class="form-field"><label for="recipeDifficulty">Сложность</label><select id="recipeDifficulty" name="difficulty" required><option>Легко</option><option>Средне</option><option>Сложно</option></select></div>
+            <div class="form-field"><label for="recipeEmoji">Эмодзи</label><input id="recipeEmoji" name="emoji" value="🍽️" maxlength="12" placeholder="🍰" required></div>
+          </div>
+          <div class="form-grid three">
+            <div class="form-field"><label for="recipePrepTime">Подготовка (мин)</label><input id="recipePrepTime" name="prep_time" type="number" min="0" max="1440" value="10" required></div>
+            <div class="form-field"><label for="recipeCookTime">Готовка (мин)</label><input id="recipeCookTime" name="cook_time" type="number" min="0" max="1440" value="20" required></div>
+            <div class="form-field"><label for="recipeServings">Порций</label><input id="recipeServings" name="servings" type="number" min="1" max="50" value="2" required></div>
+          </div>
+          <div class="form-section-title"><div><h3>Ингредиенты</h3><p>Что понадобится и в каком количестве</p></div><button class="text-button" id="addIngredient" type="button">＋ Ингредиент</button></div>
+          <div id="ingredientRows" class="repeater-rows"></div>
+          <div class="form-section-title"><div><h3>Приготовление</h3><p>Опиши последовательность действий</p></div><button class="text-button" id="addStep" type="button">＋ Шаг</button></div>
+          <div id="stepRows" class="repeater-rows"></div>
+        </div>
+        <div class="editor-footer"><span>* Обязательные поля</span><div><button type="button" class="button button-outline" data-close="editor">Отмена</button><button type="submit" class="button button-primary" id="saveRecipe">Сохранить рецепт →</button></div></div>
+      </form>
+    </div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
