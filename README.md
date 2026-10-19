@@ -35,8 +35,6 @@
 - `difficulty=Легко` — сложность (`Легко`, `Средне`, `Сложно`);
 - `sort=fast` — сортировка (`newest`, `oldest`, `title`, `fast`).
 
-Пример: http://localhost:8080/api/recipes?category=Завтрак&sort=fast
-
 ### Пример создания рецепта
 
 Отправьте `POST /api/recipes` с JSON:
